@@ -32,3 +32,7 @@
 .card {
     border-radius: 10px;
 }
+
+canvas {
+    max-height: 400px;
+}

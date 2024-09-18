@@ -1,11 +1,30 @@
 
 
-const ctx = document.getElementById('receitaxdespesa');
-//const labels = Utils.months({count: 9});
-//['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set']
+const receitaDespesa = document.getElementById('receitaxdespesa');
+const receitaporCat = document.getElementById('receitaporCategoria');
+const despesaporCat = document.getElementById('despesaporCategoria');
 
 
-new Chart(ctx, {
+const dataReceitaCategoria = {
+    labels: [
+      'Pedidos Ifood',
+      'Pedidos Balcão',
+      'Pedidos Online'
+    ],
+    datasets: [{
+      label: 'Receita por categoria',
+      data: [300, 50, 100],
+      backgroundColor: [
+        '#F00000',
+        '#3B88C3',
+        '#FFE500'
+      ],
+      hoverOffset: 4
+    }]
+  };
+
+
+new Chart(receitaDespesa, {
     type: 'bar',
     data: {
         labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set'],
@@ -31,3 +50,10 @@ new Chart(ctx, {
     }
     }
 });
+
+new Chart(receitaporCat ,{
+    type: 'doughnut',
+    data: dataReceitaCategoria
+})
+
+//Criar os dois graficos que faltam
