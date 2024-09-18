@@ -65,9 +65,9 @@ label {
 
 
 #submit-btn {
-  width: 50%;
-  padding: 12px;
-  background-color: #e74c3c;
+  width: 100%;
+  padding: 14px;
+  background-color: #F00000;
   color: white;
   border: none;
   border-radius: 10px; 
