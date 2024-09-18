@@ -3,65 +3,206 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Financeiro</title>
+    <title>Pedidos</title>
     <link rel="stylesheet" href="pedidos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
-    <header>
-      <h1>Dashboard Financeiro</h1>
-      <div class="date-container">
-        <span class="current-date" id="current-date"></span>
+    <header class="navbar navbar- navbar-light bg-light fixed-top p-2 mb-2">
+      <div class="container-fluid justify-content-start ">
+          <button class="navbar-toggler menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvaslightNavbar" aria-controls="offcanvaslightNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <a class="navbar-brand px-4" href="#">Pedidos</a>
+          
+          <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="offcanvaslightNavbar" aria-labelledby="offcanvaslightNavbarLabel">
+              <div class="offcanvas-header d-flex p-4 justify-content-between">
+                  <img id="offcanvaslightNavbarLabel" src="../../assets/logo ifood.png" alt="Logo iFood" class="logo mx-auto" />
+                  <span><button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button></span>
+              </div>
+              
+              <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                      <li class="nav-item">
+                          <a class="nav-link" href="../dashboard/Dashboard.html">
+                              <img src="../../assets/icons/dashboardIcon.svg" alt="Dashboard Icon" class="icon" />
+                              Dashboard Financeiro
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active shadow-sm" aria-current="page" href="../pedidos/Pedidos.html">
+                              <img src="../../assets/icons/pedidos.svg" alt="Pedidos Icon" class="icon" />
+                              Saldos e Pedidos
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link"  href="../transacoes/Transacoes.html">
+                              <img src="../../assets/icons/gestaoIcon.svg" alt="Gestão Icon" class="icon" />
+                              Gestão Pagamentos/Recebíveis
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="offcanvas-footer mb-4 p-2 pe-3">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3"></ul>
+                      <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#">
+                              <img src="../../assets/icons/perfilIcon.svg" alt="Perfil Icon" class="icon" />
+                              Perfil
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="../pedidos/Pedidos.html">
+                              <img src="../../assets/icons/logoutIcon.svg" alt="Logout Icon" class="icon" />
+                              Logout
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
       </div>
     </header>
 
-    <hr />
+    <hr/>
 
-    <main>
-      <div class="filter-container">
-        <div class="date-filter">
-          <label for="start-date">De:</label>
-          <input type="date" id="start-date" />
-          <label for="end-date">Até:</label>
-          <input type="date" id="end-date" />
-        </div>
-        <button id="export-btn">Exportar PDF</button>
-      </div>
-
-      <div class="adjust-balance">
+    <main class="container-fluid mt-5">
+      <div class="adjust-balance ms-5">
         <button id="adjust-balance-btn">Ajustar Saldo</button>
       </div>
 
-      <div class="cards-container">
-        <div class="card">
-          <h2>Saldo Atual</h2>
-          <p id="current-balance">R$ 0,00</p>
+      <div class="d-flex row w-100 justify-content-around align-items-center">
+        <div class="shadow card w-auto h-fit p-4 px-5  mt-2">
+            <h4 class="pb-2">Saldo Total</h4>
+            <h2>R$6.000,00</h2>
         </div>
 
-        <div class="card">
-          <h2>Lucro Líquido</h2>
-          <p id="net-profit">R$ 0,00</p>
+        <div class="shadow card w-50 p-4 px-5 mt-2">
+            <h4 class="pb-2">Saldo acumulado total</h4>
+            <canvas style="max-height: 250px" id="saldototal"></canvas>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="d-flex row w-100 justify-content-around align-items-center">
+        <div class="shadow card w-auto p-4 px-5 mt-2">
+          <div class="insert-transaction justify-content-center">
+            <h4 class="text-center mb-3">Inserir Nova Transação</h4>
+            <form id="transaction-form">
+              <div class="transaction-type mb-3">
+                <span class="me-2">Local Pedido</span>
+                <label>
+                  <input id="tipopedido" type="radio" name="transaction-type" value="ifood" />
+                  Ifood
+                </label>
+                <label>
+                  <input id="tipopedido" type="radio" name="transaction-type" value="online" />
+                  Online
+                </label>
+                <label>
+                  <input id="tipopedido" type="radio" name="transaction-type" value="online" />
+                  Balcão
+                </label>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label class="me-2" for="transaction-date">Data</label>
+                <input type="date" id="transaction-date" name="transaction-date" />
+              </div>
+  
+              <div class="form-group mb-3">
+                <label class="me-2" for="status">Status</label>
+                <label>
+                  <input id="tipopedido" type="radio" name="transaction-type" value="pago" />
+                  Pago
+                </label>
+                <label>
+                  <input id="tipopedido" type="radio" name="transaction-type" value="apagar" />
+                  A pagar
+                </label>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label class="me-2" for="value">Valor</label>
+                <input type="number" id="value" name="value" placeholder="Valor" />
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="order-code">Código do Cliente</label>
+                <input type="text" id="order-code" name="order-code" placeholder="Código do cliente" />
+              </div>
+              
+              <div class="justify-content-center">
+                <button class="mx-auto text-center" type="submit" id="add-transaction-btn">Adicionar</button>
+              </div>
+            </form>
+          </div>
         </div>
 
-        <div class="card">
-          <h2>Receitas por Categorias</h2>
-          <div class="chart" id="revenue-chart"></div>
-        </div>
+        <div class="shadow card w-auto p-4 px-5 mt-2 ">
+          <div class="transactions-container">
+            <div class="transaction-card">
+              <h4>Últimos Pedidos</h4>
+              <table id="transaction-table">
+                <thead>
+                  <tr>
+                    <th>Nº do Pedido</th>
+                    <th>Status</th>
+                    <th>Local</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>001</td>
+                    <td>Pago</td>
+                    <td>iFood</td>
+                    <td>R$ 50,00</td>
+                    <td>2024-09-01</td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>Pago</td>
+                    <td>Ifood</td>
+                    <td>R$ 100,00</td>
+                    <td>2024-09-02</td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>A pagar</td>
+                    <td>Online</td>
+                    <td>R$ 70,00</td>
+                    <td>2024-09-03</td>
+                  </tr>
+                  <tr>
+                    <td>004</td>
+                    <td>Pago</td>
+                    <td>Ifood</td>
+                    <td>R$ 150,00</td>
+                    <td>2024-09-04</td>
+                  </tr>
+                  <tr>
+                    <td>005</td>
+                    <td>Pago</td>
+                    <td>Balcão</td>
+                    <td>R$ 100,00</td>
+                    <td>2024-09-05</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-        <div class="card">
-          <h2>Receita Total</h2>
-          <p id="total-revenue">R$ 0,00</p>
-        </div>
-
-        <div class="card">
-          <h2>Despesa Total</h2>
-          <p id="total-expense">R$ 0,00</p>
-        </div>
-
-        <div class="card">
-          <h2>Despesa por Categoria</h2>
-          <div class="chart" id="expense-chart"></div>
         </div>
       </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../scripts/saldochart.js"></script>
   </body>
 </html>

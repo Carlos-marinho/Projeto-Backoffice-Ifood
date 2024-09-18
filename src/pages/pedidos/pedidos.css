@@ -54,8 +54,42 @@ button {
   font-size: 1rem;
 }
 
-button:hover {
-  background-color: #45a049;
+button:hover{
+  background-color: #F00000;
+}
+
+.menu-button:hover {
+  background-color: #F00000;
+}
+
+.logo {
+  width: 85px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 6px;
+}
+
+.active {
+background-color: #D9D9D9;
+
+}
+
+.nav-item {
+padding-top: 5px;
+list-style: none;
+}
+
+.nav-link {
+align-items: center;
+padding: 10px;
+border-radius: 5px;
+}
+
+.nav-link:hover{
+background-color: #D9D9D9;
 }
 
 .adjust-balance {
@@ -84,4 +118,19 @@ button:hover {
   height: 200px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
 }

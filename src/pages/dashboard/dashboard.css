@@ -34,5 +34,20 @@
 }
 
 canvas {
-    max-height: 400px;
+    max-height: 300px;
+}
+
+button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+.menu-button:hover {
+    background-color: #F00000;
 }
