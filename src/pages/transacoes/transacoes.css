@@ -30,21 +30,61 @@ body {
   
   main {
     padding: 20px;
+
+    & h2 {
+      max-width: 900px;
+      margin: 0 auto 10px;
+    }
   }
   
+  .transaction-summary-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
   .insert-transaction {
+    flex: 1;
     padding: 15px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 525px;
   }
-  
-  .insert-transaction h2 {
-    margin-top: 0;
+
+  .summary-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
-  
+
+  .summary-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .transaction-summary-container {
+      flex-direction: column;
+    }
+
+    .summary-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .summary-card {
+      max-width: 48%;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -52,21 +92,17 @@ body {
   }
   
   .transaction-type p {
-    margin: 0 0 10px 0;
+    margin: 0;
   }
   
-  .transaction-type label {
-    display: block;
+  .transaction-type input, label {
+    display: flex;
+    justify-content: end;
     margin-bottom: 5px;
   }
   
-  input[type="radio"] {
+  input[type="checkbox"] {
     margin-right: 5px;
-  }
-  
-  label {
-    display: block;
-    margin: 5px 0;
   }
   
   textarea {
@@ -143,11 +179,71 @@ body {
     .summary-container, .transactions-container {
       flex-direction: column;
       align-items: center;
+      padding: 10px;
     }
-  
+
     .summary-card, .transaction-card {
       width: 100%;
-      max-width: 90%;
+      max-width: 95%; 
+      padding: 10px; 
+    }
+
+    .transaction-card {
+      flex: 1 1 100%;
+    }
+
+    table {
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 6px; 
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    .form-group label {
+      font-size: 14px;
+    }
+
+    input, textarea, button {
+      font-size: 14px;
     }
   }
   
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    margin-right: 10px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    flex: 1;
+  }
+
+  .transaction-type {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .transaction-type p {
+    flex: 0 0 150px;
+    margin-right: 10px;
+  }
+
+  .checkbox-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  #add-transaction-btn {
+    margin-top: 10px;
+  }

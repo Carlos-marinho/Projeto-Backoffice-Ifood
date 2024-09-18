@@ -17,63 +17,63 @@
     <hr />
 
     <main>
-      <div class="insert-transaction">
-        <h2>Inserir Nova Transação</h2>
-        <form id="transaction-form">
-          <div class="transaction-type">
-            <p>Tipo de Transação</p>
-            <label>
-              <input type="radio" name="transaction-type" value="recebivel" />
-              Recebível
-            </label>
-            <label>
-              <input type="radio" name="transaction-type" value="pagamento" />
-              Pagamento
-            </label>
-          </div>
+      <h2>Inserir Nova Transação</h2>
+      <div class="transaction-summary-container">
+        <div class="insert-transaction">
+          <form id="transaction-form">
+            <div class="transaction-type">
+              <p>Tipo de Transação</p>
+              <div class="checkbox-group">
+                <label>
+                  <input type="checkbox" name="transaction-type" value="recebivel" />
+                  Recebível
+                </label>
+                <label>
+                  <input type="checkbox" name="transaction-type" value="pagamento" />
+                  Pagamento
+                </label>
+              </div>
+            </div>
 
-          <label for="transaction-date">Data</label>
-          <input type="date" id="transaction-date" name="transaction-date" />
+            <div class="form-group">
+              <label for="transaction-date">Data</label>
+              <input type="date" id="transaction-date" name="transaction-date" />
+            </div>
 
-          <label for="category">Categoria</label>
-          <input
-            type="text"
-            id="category"
-            name="category"
-            placeholder="Categoria"
-          />
+            <div class="form-group">
+              <label for="category">Categoria</label>
+              <input type="text" id="category" name="category" placeholder="Categoria" />
+            </div>
 
-          <label for="value">Valor</label>
-          <input type="number" id="value" name="value" placeholder="Valor" />
+            <div class="form-group">
+              <label for="value">Valor</label>
+              <input type="number" id="value" name="value" placeholder="Valor" />
+            </div>
 
-          <label for="order-code">Código do Pedido</label>
-          <input
-            type="text"
-            id="order-code"
-            name="order-code"
-            placeholder="Código do Pedido"
-          />
+            <div class="form-group">
+              <label for="order-code">Código do Pedido</label>
+              <input type="text" id="order-code" name="order-code" placeholder="Código do Pedido" />
+            </div>
 
-          <label for="observation">Observação</label>
-          <textarea
-            id="observation"
-            name="observation"
-            placeholder="Observação"
-          ></textarea>
+            <div class="form-group">
+              <label for="observation">Observação</label>
+              <textarea id="observation" name="observation" placeholder="Observação"></textarea>
+            </div>
 
-          <button type="submit" id="add-transaction-btn">Adicionar</button>
-        </form>
-      </div>
-
-      <div class="summary-container">
-        <div class="summary-card">
-          <h2>Contas a Pagar</h2>
-          <p id="total-payable">R$ 0,00</p>
+            <button type="submit" id="add-transaction-btn">Adicionar</button>
+          </form>
         </div>
 
-        <div class="summary-card">
-          <h2>Contas a Receber</h2>
-          <p id="total-receivable">R$ 0,00</p>
+        <div class="summary-container">
+          <div class="summary-card">
+            <h2>Contas a Pagar</h2>
+            <p id="total-payable">R$ 0,00</p>
+          </div>
+
+          <div class="summary-card">
+            <h2>Contas a Receber</h2>
+            <p id="total-receivable">R$ 0,00</p>
+          </div>
         </div>
       </div>
 
