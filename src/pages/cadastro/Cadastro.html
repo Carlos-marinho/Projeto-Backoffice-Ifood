@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastro.css" />
+  </head>
+  <body>
+    <header id="header">
+      <img src="../../assets/logo ifood.png" alt="Logo iFood" class="logo" />
+      <h1 class="title">Fazer Cadastro</h1>
+    </header>
+
+    <main id="main-form">
+      <form id="form">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="input-field"
+          placeholder="Digite seu nome"
+        />
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="input-field"
+          placeholder="Digite seu email"
+        />
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="input-field"
+          placeholder="Digite sua senha"
+        />
+
+        <input
+          type="tel"
+          id="tel"
+          name="tel"
+          class="input-field"
+          placeholder="Digite seu telefone"
+        />
+
+        <input
+          type="number"
+          id="age"
+          name="age"
+          class="input-field"
+          placeholder="Digite sua idade"
+        />
+
+        <p>Escolha uma função</p>
+        <div class="radio-group">
+          <input type="radio" id="opcao1" name="options" value="opcao1" />
+          <label for="opcao1">Atendente</label>
+        </div>
+
+        <div class="radio-group">
+          <input type="radio" id="opcao2" name="options" value="opcao2" />
+          <label for="opcao2">Administrador/Gerente</label>
+        </div>
+      </form>
+
+      <button id="submit-btn">Realizar cadastro</button>
+    </main>
+  </body>
+</html>
